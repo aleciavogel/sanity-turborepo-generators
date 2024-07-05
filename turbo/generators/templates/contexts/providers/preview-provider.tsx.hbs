@@ -1,0 +1,26 @@
+'use client'
+
+import type { FC } from 'react'
+import React from 'react'
+
+import { use{{ pascalCase name }}Query } from '@/features/{{ kebabCase feature }}/_data/hooks'
+
+import Provider from './provider'
+
+interface PreviewProviderProps {
+  children: React.ReactNode
+  initial: Parameters<typeof use{{ pascalCase name }}Query>[0]{{#if (eq type 'document')}}
+  slug: string{{/if}}
+}
+
+const PreviewProvider: FC<PreviewProviderProps> = ({ initial, children{{#if (eq type 'document')}}, slug{{/if}} }) => {
+  const { data, encodeDataAttribute } = use{{ pascalCase name }}Query(initial{{#if (eq type 'document')}}, slug{{/if}})
+
+  return (
+    <Provider data={data!} encodeDataAttribute={encodeDataAttribute}>
+      {children}
+    </Provider>
+  )
+}
+
+export default PreviewProvider

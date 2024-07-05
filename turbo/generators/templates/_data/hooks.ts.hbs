@@ -1,0 +1,15 @@
+import type { QueryResponseInitial } from '@sanity/react-loader'
+
+import {
+  {{ pascalCase name }}QueryResult,
+} from '@/sanity.types'
+import { useQuery } from '@/vendors/sanity/loader/useQuery'
+
+import {
+  {{ camelCase name }}Query,
+} from './queries'
+
+
+export function use{{ pascalCase name }}Query(initial: QueryResponseInitial<{{ pascalCase name }}QueryResult>{{#if (eq type 'document')}}, slug: string{{/if}}) {
+  return useQuery<{{ pascalCase name }}QueryResult>({{ camelCase name }}Query, { {{#if (eq type 'document')}}slug{{/if}} }, { initial })
+}

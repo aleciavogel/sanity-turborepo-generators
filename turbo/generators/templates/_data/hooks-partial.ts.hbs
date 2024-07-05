@@ -1,0 +1,4 @@
+
+export function use{{ pascalCase name }}Query(initial: QueryResponseInitial<{{ pascalCase name }}QueryResult>{{#if (eq type 'document')}}, slug: string{{/if}}) {
+  return useQuery<{{ pascalCase name }}QueryResult>({{ camelCase name }}Query, { {{#if (eq type 'document')}}slug{{/if}} }, { initial })
+}

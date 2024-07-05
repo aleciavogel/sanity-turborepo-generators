@@ -1,0 +1,16 @@
+import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
+import { createContext } from 'react'
+
+import { {{ pascalCase name }}QueryResult } from '@/sanity.types'
+
+export interface {{ pascalCase name }}ContextType {
+  data: {{ pascalCase name }}QueryResult | null
+  encodeDataAttribute?: EncodeDataAttributeCallback
+}
+
+const initialContext: {{ pascalCase name }}ContextType = {
+  data: null,
+  encodeDataAttribute: undefined,
+}
+
+export default createContext<{{ pascalCase name }}ContextType>(initialContext)

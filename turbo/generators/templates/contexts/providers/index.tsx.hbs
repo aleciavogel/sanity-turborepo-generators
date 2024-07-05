@@ -1,0 +1,31 @@
+import dynamic from 'next/dynamic'
+import { draftMode } from 'next/headers'
+import { notFound } from 'next/navigation'
+import type { ReactNode } from 'react'
+import React from 'react'
+
+import { load{{ pascalCase name }} } from '@/features/{{ kebabCase feature }}/_data/load'
+
+import Provider from './provider'
+const PreviewProvider = dynamic(() => import('./preview-provider'))
+
+interface DynamicProviderProps {
+  children: ReactNode{{#if (eq type 'document')}}
+  slug: string{{/if}}
+}
+
+export async function DynamicProvider({ children{{#if (eq type 'document')}}, slug{{/if}} }: DynamicProviderProps) {
+  const initial = await load{{ pascalCase name }}({{#if (eq type 'document')}}slug{{/if}})
+
+  if (!initial.data) {
+    notFound()
+  }
+
+  if (draftMode().isEnabled) {
+    return <PreviewProvider initial={initial}{{#if (eq type 'document')}} slug={slug}{{/if}}>{children}</PreviewProvider>
+  }
+
+  return <Provider data={initial.data}>{children}</Provider>
+}
+
+export default DynamicProvider

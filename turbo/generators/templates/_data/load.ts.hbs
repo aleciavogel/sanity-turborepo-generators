@@ -1,0 +1,15 @@
+import {
+  {{ pascalCase name }}QueryResult,
+} from '@/sanity.types'
+import { loadQuery } from '@/vendors/sanity/loader/loadQuery'
+
+import {
+  {{ camelCase name }}Query,
+} from './queries'
+
+/**
+ * Fetch the {{ lowerCase name }}{{#if (eq type 'document')}}
+ * @param slug - The slug of the {{ lowerCase name }} to fetch.{{/if}}
+ */
+export const load{{ pascalCase name }} = async ({{#if (eq type 'document')}}slug: string{{/if}}) =>
+  loadQuery<{{ pascalCase name }}QueryResult>({{ camelCase name }}Query, { {{#if (eq type 'document')}}slug{{/if}} }, { next: { tags: [`{{ camelCase name }}{{#if (eq type 'document')}}:${slug}{{/if}}`] } })

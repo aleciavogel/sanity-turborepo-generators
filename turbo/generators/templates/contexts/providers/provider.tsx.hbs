@@ -1,0 +1,20 @@
+'use client'
+
+import { EncodeDataAttributeCallback } from '@sanity/react-loader'
+import React, { type FC } from 'react'
+
+import { {{ pascalCase name }}QueryResult } from '@/sanity.types'
+
+import ProviderContext from '../context'
+
+export type ProviderProps = {
+  children: React.ReactNode
+  data: {{ pascalCase name }}QueryResult
+  encodeDataAttribute?: EncodeDataAttributeCallback
+}
+
+const Provider: FC<ProviderProps> = ({ children, ...props }) => (
+  <ProviderContext.Provider value={props}>{children}</ProviderContext.Provider>
+)
+
+export default Provider

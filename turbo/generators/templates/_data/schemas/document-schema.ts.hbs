@@ -1,0 +1,48 @@
+// import { RobotIcon } from '@sanity/icons'
+import { defineField, defineType } from 'sanity'
+
+export default defineType({
+  name: '{{ camelCase name }}',
+  title: '{{ titleCase name }}',
+  // TODO: Add icon
+  // icon: RobotIcon,
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+      },
+    }),
+    defineField({
+      name: 'seo',
+      title: 'SEO & Socials',
+      type: 'seo',
+    }),
+  ],
+  // This is for the preview of the document in Sanity Studio
+  preview: {
+    select: {
+      title: 'title',
+      media: 'featuredImage',
+    },
+    prepare({ title, media }) {
+      return {
+        title: title,
+        media: media,
+      }
+    },
+  },
+})
