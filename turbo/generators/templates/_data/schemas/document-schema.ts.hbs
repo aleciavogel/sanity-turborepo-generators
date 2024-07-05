@@ -9,16 +9,6 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-    }),
-    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -26,23 +16,6 @@ export default defineType({
         source: 'title',
       },
     }),
-    defineField({
-      name: 'seo',
-      title: 'SEO & Socials',
-      type: 'seo',
-    }),
   ],
-  // This is for the preview of the document in Sanity Studio
-  preview: {
-    select: {
-      title: 'title',
-      media: 'featuredImage',
-    },
-    prepare({ title, media }) {
-      return {
-        title: title,
-        media: media,
-      }
-    },
-  },
+  preview: {},
 })

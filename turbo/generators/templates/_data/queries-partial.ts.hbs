@@ -2,11 +2,8 @@
 
 const {{ camelCase name}}Fields = /* groq */ `
   _id,
-  "status": select(_originalId in path("drafts.**") => "draft", "published"),
-  "title": coalesce(title, "Untitled {{ titleCase name }}"),
-  description,{{#if (eq type 'document')}}
+  "status": select(_originalId in path("drafts.**") => "draft", "published"),{{#if (eq type 'document')}}
   slug,{{/if}}
-  seo
 `
 
 export const {{ camelCase name}}Query = groq`*[_type == "{{ camelCase name}}"{{#if (eq type 'document')}} && slug.current == $slug{{/if}}] [0] {

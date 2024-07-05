@@ -42,3 +42,5 @@ turbo gen schema
 Note: you'll still need to update your main sanity schema and your `sanity.config.ts` per usual (although, it's possible to automate this too!)
 
 Feel free to edit the generator templates and the `config.ts` to suit your project's structure and needs.
+
+## Troubleshooting
