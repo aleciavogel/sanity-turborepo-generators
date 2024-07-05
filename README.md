@@ -1,5 +1,7 @@
 # sanity-turborepo-generators
 
+Turbo generators to accelorate Sanity Schema development with React contexts & hooks. [Read more here!](https://www.linkedin.com/pulse/accelerate-sanity-schema-development-nextjs-react-contexts-vogel-eyzkc)
+
 ## Getting Started
 
 Install turborepo and `@turbo/gen` in your project:
